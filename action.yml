@@ -43,7 +43,7 @@ inputs:
     default: ''
   pipelineVersion:
     description: 'The name of the version, from the pipeline chosen, that will be used.'
-    required: true
+    required: false
     default: ''
   pipelineParams:
     description: "Pipeline Parameters in the format: {\"name\":\"VAR_NAME\", \"value\":\"VAR_VALUE\"}, {\"name\":\"VAR_NAME\", \"value\":\"VAR_VALUE\"}"
@@ -58,7 +58,7 @@ inputs:
     required: true
     default: ''
   experiment:
-    description: "This is a boolean that, if true, will create a new experiment, if false will use an existing experiment. Either input 'true' or 'false'."
+    description: "Input either 'createNewExperiment' to make a new experiment, or 'useExistingExperiment' to use an existing experiment."
     required: true
     default: ''
   experimentName:

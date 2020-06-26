@@ -1,0 +1,39 @@
+on: [push]
+
+jobs:
+  kubeflow_upload_job:
+    runs-on: ubuntu-latest
+    name: Kubeflow Upload and Run Pipeline
+    steps:
+    - name: Checkout task
+      uses: actions/checkout@master
+
+    - name: Kubeflow Upload and Run Step
+      id: upload
+      uses: kaizentm/kubeflow-pipeline-github-action@master
+      with:
+        kubeflowEndpoint: ''
+        bearerToken: ''
+        kubeflowPipelineTask: 'uploadNew'
+        pipelineFilePath: '**/pipeline.py.tar.gz'
+        newPipelineName: 'testPL'
+        existingPipelineName: ''
+        versionName: ''
+
+        runName: 'testRun'
+        pipeline: 'testPL'
+        useDefaultVersion: 'true'
+        pipelineVersion: ''
+        pipelineParams: '{"name":"resource_group", "value":"kubeflow-integration-rg"}, {"name":"workspace", "value":"kubeflow-integration-aml"}'
+        runDescription: ''
+        waitForRunToFinish: 'true'
+        experiment: 'useExistingExperiment'
+        experimentName: 'testExperiment'
+        experimentDescription: ''
+    # Use the outputs from the `Kubeflow Upload and Run Step`
+    - name: Get all outputs
+      run: |
+        echo "Pipeline version id ${{ steps.run.outputs.kf_pipeline_version_id }}"
+        echo "Pipeline id ${{ steps.run.outputs.kf_pipeline_id }}"
+        echo "Experiment id ${{ steps.run.outputs.kf_experiment_id }}"
+        echo "Run id ${{ steps.run.outputs.kf_run_id }}"
