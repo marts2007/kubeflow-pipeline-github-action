@@ -8,6 +8,8 @@ jobs:
     - name: Checkout task
       uses: actions/checkout@master
 
+    - run: npm install
+
     - name: Kubeflow Upload and Run Step
       id: upload
       uses: kaizentm/kubeflow-pipeline-github-action@master

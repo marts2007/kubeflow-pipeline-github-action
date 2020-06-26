@@ -113,5 +113,5 @@ package-lock.json
 .taskkey
 
 # js files compiled from ts files
-*.js
-.js
+# *.js
+# .js
