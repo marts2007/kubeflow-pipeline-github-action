@@ -21,7 +21,7 @@ jobs:
       id: upload_run
       uses: kaizentm/kubeflow-pipeline-github-action@master
       with:
-        kubeflowEndpoint: '${{ secrets.KUBEFLOWENDPOINT }}'
+        kubeflowEndpoint: '${{ secrets.KUBEFLOW_ENDPOINT }}'
         bearerToken: '${{ secrets.TOKEN }}'
         kubeflowPipelineTask: 'uploadNew'
         pipelineFilePath: '**/pipeline.py.tar.gz'
@@ -60,7 +60,7 @@ jobs:
       id: upload_run
       uses: kaizentm/kubeflow-pipeline-github-action@master
       with:
-        kubeflowEndpoint: '${{ secrets.KUBEFLOWENDPOINT }}'
+        kubeflowEndpoint: '${{ secrets.KUBEFLOW_ENDPOINT }}'
         bearerToken: '${{ secrets.TOKEN }}'
         kubeflowPipelineTask: 'uploadNewVersion'
         pipelineFilePath: '**/pipeline.py.tar.gz'

@@ -14,8 +14,8 @@ jobs:
       id: upload
       uses: kaizentm/kubeflow-pipeline-github-action@master
       with:
-        kubeflowEndpoint: ''
-        bearerToken: ''
+        kubeflowEndpoint: '${{ secrets.KUBEFLOW_ENDPOINT }}'
+        bearerToken: '${{ secrets.TOKEN }}'
         kubeflowPipelineTask: 'uploadNew'
         pipelineFilePath: '**/pipeline.py.tar.gz'
         newPipelineName: 'testPL'
