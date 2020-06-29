@@ -18,7 +18,7 @@ jobs:
     - run: npm install
 
     - name: Kubeflow Upload and Run Step
-      id: upload
+      id: upload_run
       uses: kaizentm/kubeflow-pipeline-github-action@master
       with:
         kubeflowEndpoint: '${{ secrets.KUBEFLOWENDPOINT }}'
@@ -57,7 +57,7 @@ jobs:
     - run: npm install
 
     - name: Kubeflow Upload and Run Step
-      id: upload
+      id: upload_run
       uses: kaizentm/kubeflow-pipeline-github-action@master
       with:
         kubeflowEndpoint: '${{ secrets.KUBEFLOWENDPOINT }}'
