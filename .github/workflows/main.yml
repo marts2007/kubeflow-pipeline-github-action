@@ -8,7 +8,7 @@ jobs:
     - name: Checkout task
       uses: actions/checkout@master
 
-    - run: npm install
+    # - run: npm install
 
     - name: Kubeflow Upload and Run Step
       id: upload
@@ -18,9 +18,9 @@ jobs:
         bearerToken: '${{ secrets.TOKEN }}'
         kubeflowPipelineTask: 'uploadNew'
         pipelineFilePath: 'action/code/tests/pipeline.py.tar.gz'
-        newPipelineName: 'testPL'
-        existingPipelineName: ''
-        versionName: ''
+        newPipelineName: ''
+        existingPipelineName: 'testPL'
+        versionName: 'newVersion'
 
         runName: 'testRun'
         pipeline: 'testPL'
@@ -29,7 +29,7 @@ jobs:
         pipelineParams: '{"name":"resource_group", "value":"kubeflow-integration-rg"}, {"name":"workspace", "value":"kubeflow-integration-aml"}'
         runDescription: ''
         waitForRunToFinish: 'true'
-        experiment: 'createNewExperiment'
+        experiment: 'useExistingExperiment'
         experimentName: 'testExperiment'
         experimentDescription: ''
     # Use the outputs from the `Kubeflow Upload and Run Step`
