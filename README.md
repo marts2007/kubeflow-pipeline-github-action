@@ -2,6 +2,84 @@
 
 Github action to upload and run a Kubeflow pipeline to KubeFlow workspace.
 
+The following is an example of uploading a new pipeline, creating a new experiment, and running/monitoring the new pipeline on that experiment with this action:
+
+```yaml
+on: [push]
+
+jobs:
+  kubeflow_upload_job:
+    runs-on: ubuntu-latest
+    name: Kubeflow Upload and Run Pipeline
+    steps:
+    - name: Checkout task
+      uses: actions/checkout@master
+
+    - run: npm install
+
+    - name: Kubeflow Upload and Run Step
+      id: upload
+      uses: kaizentm/kubeflow-pipeline-github-action@master
+      with:
+        kubeflowEndpoint: '${{ secrets.KUBEFLOWENDPOINT }}'
+        bearerToken: '${{ secrets.TOKEN }}'
+        kubeflowPipelineTask: 'uploadNew'
+        pipelineFilePath: '**/pipeline.py.tar.gz'
+        newPipelineName: 'testPipeline'
+        existingPipelineName: ''
+        versionName: ''
+
+        runName: 'testRun'
+        pipeline: 'testPipeline'
+        useDefaultVersion: 'true'
+        pipelineVersion: ''
+        pipelineParams: '{"name":"Var1", "value":"Val1"}, {"name":"Var2", "value":"Val2"}'
+        runDescription: ''
+        waitForRunToFinish: 'true'
+        experiment: 'createNewExperiment'
+        experimentName: 'testExperiment'
+        experimentDescription: ''
+```
+
+The following is an example of uploading a new pipeline version and running the pipeline with the new version:
+
+```yaml
+on: [push]
+
+jobs:
+  kubeflow_upload_job:
+    runs-on: ubuntu-latest
+    name: Kubeflow Upload and Run Pipeline
+    steps:
+    - name: Checkout task
+      uses: actions/checkout@master
+
+    - run: npm install
+
+    - name: Kubeflow Upload and Run Step
+      id: upload
+      uses: kaizentm/kubeflow-pipeline-github-action@master
+      with:
+        kubeflowEndpoint: '${{ secrets.KUBEFLOWENDPOINT }}'
+        bearerToken: '${{ secrets.TOKEN }}'
+        kubeflowPipelineTask: 'uploadNewVersion'
+        pipelineFilePath: '**/pipeline.py.tar.gz'
+        newPipelineName: ''
+        existingPipelineName: 'testPipeline'
+        versionName: 'newVersion'
+
+        runName: 'testRun'
+        pipeline: 'testPipeline'
+        useDefaultVersion: 'false'
+        pipelineVersion: 'newVersion'
+        pipelineParams: '{"name":"Var1", "value":"Val1"}, {"name":"Var2", "value":"Val2"}'
+        runDescription: ''
+        waitForRunToFinish: 'false'
+        experiment: 'useExistingExperiment'
+        experimentName: 'testExperiment'
+        experimentDescription: ''
+```
+
 ### Inputs
 - **kubeflowEndpoint:** Kubeflow API endpoint base URL format http://yourURL/.
 - **bearerToken:** Bearer token to of secured Kubeflow API. Read more on how to handle [Creating and storing encrypted secrets](https://help.github.com/en/actions/configuring-and-managing-workflows/creating-and-storing-encrypted-secrets) on Github.  
