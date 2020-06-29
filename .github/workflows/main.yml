@@ -20,7 +20,7 @@ jobs:
         pipelineFilePath: 'action/code/tests/pipeline.py.tar.gz'
         newPipelineName: ''
         existingPipelineName: 'testPL'
-        versionName: 'newVersion'
+        versionName: 'newVersionV2'
 
         runName: 'testRun'
         pipeline: 'testPL'
@@ -29,7 +29,7 @@ jobs:
         pipelineParams: '{"name":"resource_group", "value":"kubeflow-integration-rg"}, {"name":"workspace", "value":"kubeflow-integration-aml"}'
         runDescription: ''
         waitForRunToFinish: 'true'
-        experiment: 'useExistingExperiment'
+        experiment: 'createNewExperiment'
         experimentName: 'testExperiment'
         experimentDescription: ''
     # Use the outputs from the `Kubeflow Upload and Run Step`
