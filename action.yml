@@ -1,5 +1,6 @@
 name: 'Kubeflow Create and Run Pipeline'
 description: 'Create and run a Kubeflow pipeline'
+author: 'Microsoft'
 inputs:
   kubeflowEndpoint:  
     description: 'Kubeflow API endpoint base URL format http://yourURL/'
