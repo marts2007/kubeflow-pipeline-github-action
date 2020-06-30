@@ -1,5 +1,5 @@
-name: 'Kubeflow Create and Run Pipeline'
-description: 'Create and run a Kubeflow pipeline'
+name: 'Kubeflow pipeline deploy and run'
+description: 'This action deploys and runs Kubeflow pipeline to Kubeflow cluster running on Azure kubernetes Cluster'
 author: 'Microsoft'
 inputs:
   kubeflowEndpoint:  
