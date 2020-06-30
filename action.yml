@@ -80,6 +80,9 @@ outputs:
     description: 'ID of the run.'
   kf_run_status:
     description: 'Status of the run at completion, if it has been monitored.'
+branding:
+  color: 'blue'
+  icon: 'upload'
 runs:
   using: 'node12'
   main: 'action/index.js'
