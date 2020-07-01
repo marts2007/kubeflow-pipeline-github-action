@@ -1,9 +1,9 @@
 import path = require("path");
 import fs = require("fs");
 import core = require("@actions/core");
-import { UploadPipeline } from "./code/upload"
-import { Experiment } from "./code/experiment";
-import { Run } from "./code/run";
+import { UploadPipeline } from "../src/upload"
+import { Experiment } from "../src/experiment";
+import { Run } from "../src/run";
 
 async function run() {
     try {
