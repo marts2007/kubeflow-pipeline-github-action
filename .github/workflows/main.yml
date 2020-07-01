@@ -8,7 +8,11 @@ jobs:
     - name: Checkout task
       uses: actions/checkout@master
 
-    # - run: npm install
+    - name: npm install
+      run: npm install
+
+    - name: Compile
+      run: npm run build
 
     - name: Kubeflow Upload and Run Step
       id: upload-run
@@ -33,9 +37,9 @@ jobs:
         experimentName: 'testExperiment'
         experimentDescription: ''
     # Use the outputs from the `Kubeflow Upload and Run Step`
-    - name: Get all outputs
-      run: |
-        echo "Pipeline version id ${{ steps.upload-run.outputs.kf_pipeline_version_id }}"
-        echo "Pipeline id ${{ steps.upload-run.outputs.kf_pipeline_id }}"
-        echo "Experiment id ${{ steps.upload-run.outputs.kf_experiment_id }}"
-        echo "Run id ${{ steps.upload-run.outputs.kf_run_id }}"
+    # - name: Get all outputs
+    #   run: |
+    #     echo "Pipeline version id ${{ steps.upload-run.outputs.kf_pipeline_version_id }}"
+    #     echo "Pipeline id ${{ steps.upload-run.outputs.kf_pipeline_id }}"
+    #     echo "Experiment id ${{ steps.upload-run.outputs.kf_experiment_id }}"
+    #     echo "Run id ${{ steps.upload-run.outputs.kf_run_id }}"
