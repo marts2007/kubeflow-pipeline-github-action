@@ -15,6 +15,12 @@ jobs:
     - name: Checkout task
       uses: actions/checkout@master
 
+    - name: npm install
+      run: npm install
+
+    - name: Compile
+      run: npm run build
+
     - name: Kubeflow Upload and Run Step
       id: upload_run
       uses: kaizentm/kubeflow-pipeline-github-action@master
@@ -51,6 +57,12 @@ jobs:
     steps:
     - name: Checkout task
       uses: actions/checkout@master
+
+    - name: npm install
+      run: npm install
+
+    - name: Compile
+      run: npm run build
 
     - name: Kubeflow Upload and Run Step
       id: upload_run

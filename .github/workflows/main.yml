@@ -21,7 +21,7 @@ jobs:
         kubeflowEndpoint: '${{ secrets.KUBEFLOW_ENDPOINT }}'
         bearerToken: '${{ secrets.TOKEN }}'
         kubeflowPipelineTask: 'uploadNew'
-        pipelineFilePath: 'action/code/tests/pipeline.py.tar.gz'
+        pipelineFilePath: 'tests/pipeline.py.tar.gz'
         newPipelineName: 'testPL-${{ github.run_number }}'
         existingPipelineName: 'testPL'
         versionName: 'newVersion-${{ github.run_number }}'
