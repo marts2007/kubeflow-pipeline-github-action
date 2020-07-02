@@ -14,6 +14,9 @@ jobs:
     - name: Compile
       run: npm run build
 
+    - name: Run Tests
+      run: npm run test
+
     - name: Kubeflow Upload and Run Step
       id: upload-run
       uses: kaizentm/kubeflow-pipeline-github-action@master
