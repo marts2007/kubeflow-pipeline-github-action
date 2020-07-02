@@ -8,14 +8,7 @@ jobs:
     - name: Checkout task
       uses: actions/checkout@master
 
-    - name: npm install
-      run: npm install
-
-    - name: Compile
-      run: npm run build
-
-    # - name: Run Tests
-    #   run: npm run test
+    # - run: npm install
 
     - name: Kubeflow Upload and Run Step
       id: upload-run
@@ -24,7 +17,7 @@ jobs:
         kubeflowEndpoint: '${{ secrets.KUBEFLOW_ENDPOINT }}'
         bearerToken: '${{ secrets.TOKEN }}'
         kubeflowPipelineTask: 'uploadNew'
-        pipelineFilePath: 'tests/pipeline.py.tar.gz'
+        pipelineFilePath: 'action/code/tests/pipeline.py.tar.gz'
         newPipelineName: 'testPL-${{ github.run_number }}'
         existingPipelineName: 'testPL'
         versionName: 'newVersion-${{ github.run_number }}'
