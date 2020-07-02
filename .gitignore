@@ -107,7 +107,7 @@ typings/
 .vsix
 
 #Package Lock
-package-lock.json
+# package-lock.json
 
 # Local Task Key
 .taskkey
