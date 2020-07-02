@@ -1,3 +1,5 @@
+on: [release]
+
 jobs:
   kubeflow_upload_job:
     runs-on: ubuntu-latest
