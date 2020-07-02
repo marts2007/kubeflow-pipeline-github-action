@@ -86,4 +86,4 @@ branding:
   icon: 'upload'
 runs:
   using: 'node12'
-  main: 'action/index.js'
+  main: 'dist/index.js'
