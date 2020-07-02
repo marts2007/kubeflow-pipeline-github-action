@@ -1,4 +1,4 @@
-on: [push]
+on: [release]
 
 jobs:
   kubeflow_upload_job:
@@ -14,12 +14,9 @@ jobs:
     - name: Compile
       run: npm run build
 
-    - name: Run Tests
-      run: npm run test
-
     - name: Kubeflow Upload and Run Step
       id: upload-run
-      uses: kaizentm/kubeflow-pipeline-github-action@master
+      uses: actions/kubeflow-pipeline-github-action@master
       with:
         kubeflowEndpoint: '${{ secrets.KUBEFLOW_ENDPOINT }}'
         bearerToken: '${{ secrets.TOKEN }}'
@@ -39,10 +36,3 @@ jobs:
         experiment: 'useExistingExperiment'
         experimentName: 'testExperiment'
         experimentDescription: ''
-    # Use the outputs from the `Kubeflow Upload and Run Step`
-    - name: Get all outputs
-      run: |
-        echo "Pipeline version id ${{ steps.upload-run.outputs.kf_pipeline_version_id }}"
-        echo "Pipeline id ${{ steps.upload-run.outputs.kf_pipeline_id }}"
-        echo "Experiment id ${{ steps.upload-run.outputs.kf_experiment_id }}"
-        echo "Run id ${{ steps.upload-run.outputs.kf_run_id }}"
