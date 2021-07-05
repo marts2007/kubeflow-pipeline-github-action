@@ -43,6 +43,9 @@ export class UploadPipeline{
             if(req.statusCode == 200) {
                 return true;
             }
+            if(req.statusCode == 404) {
+                return true;
+            }
             return false;
         }
         catch(error) {
