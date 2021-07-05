@@ -25,7 +25,7 @@ jobs:
         pipeline: 'testPL-${{ github.run_number }}'
         useDefaultVersion: 'true'
         pipelineVersion: 'newVersion-${{ github.run_number }}'
-        pipelineParams: '{"name":"resource_group", "value":"kubeflow-integration-rg"}, {"name":"workspace", "value":"kubeflow-integration-aml"}'
+        pipelineParams: '{"name":"resource_group", "value":"kubeflow-integration-rg"}, {"name":"workspace", "value":"kubeflow-user-example-com"}'
         runDescription: ''
         waitForRunToFinish: 'false'
         experiment: 'useExistingExperiment'
