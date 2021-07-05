@@ -12,7 +12,7 @@ jobs:
 
     - name: Kubeflow Upload and Run Step
       id: upload-run
-      uses: kaizentm/kubeflow-pipeline-github-action@master
+      uses: marts2007/kubeflow-pipeline-github-action@master
       with:
         kubeflowEndpoint: '${{ secrets.KUBEFLOW_ENDPOINT }}'
         bearerToken: '${{ secrets.TOKEN }}'
