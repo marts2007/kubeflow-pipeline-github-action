@@ -32,12 +32,9 @@ class UploadPipeline {
     }
     async validateEndpointUrl() {
         try {
-            var options = { additionalHeaders: { 'authorization': `Bearer ${this.bearerToken}` } };
+            var options = { additionalHeaders: { 'Cookie': `authservice_session=${this.bearerToken};` } };
             var req = await this.restAPIClient.get(this.endpointUrl, options);
             if (req.statusCode == 200) {
-                return true;
-            }
-            if (req.statusCode == 404) {
                 return true;
             }
             return false;
