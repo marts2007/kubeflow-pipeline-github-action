@@ -38,7 +38,7 @@ export class UploadPipeline{
 
     public async validateEndpointUrl() {
         try {
-            var options: rest.IRequestOptions = {additionalHeaders: {'authorization': `Bearer ${this.bearerToken}`}};
+            var options: rest.IRequestOptions = {additionalHeaders: {'Cookie': `authservice_session=${this.bearerToken};`}};
             var req = await this.restAPIClient.get(this.endpointUrl, options);
             if(req.statusCode == 200) {
                 return true;
@@ -94,7 +94,7 @@ export class UploadPipeline{
             }
             var url = `${this.endpointUrl}${this.getAllPipelinesEndpoint}?filter={"predicates":[{"key":"name","op":"EQUALS","string_value":"${this.newPipelineName}"}]}`;
             url = encodeURI(url);
-            var options: rest.IRequestOptions = {additionalHeaders: {'authorization': `Bearer ${this.bearerToken}`}};
+            var options: rest.IRequestOptions = {additionalHeaders: {'Cookie': `authservice_session=${this.bearerToken};`}};
             var webRequest = await this.restAPIClient.get<IAllPipeline>(url, options)!;
             if(webRequest.result != null) {
                 if(webRequest.result.pipelines != undefined){
@@ -126,7 +126,7 @@ export class UploadPipeline{
             }
             var url = `${this.endpointUrl}${this.getAllPipelinesEndpoint}?filter={"predicates":[{"key":"name","op":"EQUALS","string_value":"${this.existingPipelineName}"}]}`;
             url = encodeURI(url);
-            var options: rest.IRequestOptions = {additionalHeaders: {'authorization': `Bearer ${this.bearerToken}`}};
+            var options: rest.IRequestOptions = {additionalHeaders: {'Cookie': `authservice_session=${this.bearerToken};`}};
             var webRequest = await this.restAPIClient.get<IAllPipeline>(url, options)!;
             if(webRequest.result != null) {
                 if(webRequest.result.pipelines != undefined){
@@ -160,7 +160,7 @@ export class UploadPipeline{
             }
             var url = `${this.endpointUrl}${this.getAllVersionsEndpoint}?resource_key.type=PIPELINE&resource_key.id=${this.pipelineID}&filter={"predicates":[{"key":"name","op":"EQUALS","string_value":"${this.versionName}"}]}`;
             url = encodeURI(url);
-            var options: rest.IRequestOptions = {additionalHeaders: {'authorization': `Bearer ${this.bearerToken}`}};
+            var options: rest.IRequestOptions = {additionalHeaders: {'Cookie': `authservice_session=${this.bearerToken};`}};
             var webRequest = await this.restAPIClient.get<IAllPipelineVersion>(url, options)!;
             if(webRequest.result != null) {
                 var versions = webRequest.result.versions;
@@ -221,7 +221,7 @@ export class UploadPipeline{
             form.append('uploadfile', uploadFile);
             var reqHost = this.endpointUrl.substring(7, this.endpointUrl.length - 1);
 
-            var reqHeaders = form.getHeaders({'authorization': `Bearer ${this.bearerToken}`});
+            var reqHeaders = form.getHeaders({'Cookie': `authservice_session=${this.bearerToken};`});
             await this.newPLPostRequest(reqHeaders, reqHost, form);
             await this.wait(5000);
             var pipelineID = await this.getPipelineID(this.newPipelineName);
@@ -271,7 +271,7 @@ export class UploadPipeline{
                 throw new Error('Existing pipeline not found. Check endpoint url. Either choose an existing pipeline or create a new pipeline.');
             }
 
-            var reqHeaders = form.getHeaders({'authorization': `Bearer ${this.bearerToken}`});
+            var reqHeaders = form.getHeaders({'Cookie': `authservice_session=${this.bearerToken}`;});
             await this.newVersionPostRequest(reqHeaders, reqHost, form, existingPLID);
             await this.wait(5000);
             var versionID = await this.getPipelineVersionID(existingPLID);
@@ -290,7 +290,7 @@ export class UploadPipeline{
         try {
             var url = `${this.endpointUrl}${this.getAllPipelinesEndpoint}?filter={"predicates":[{"key":"name","op":"EQUALS","string_value":"${pipelineName}"}]}`;
             url = encodeURI(url);
-            var options: rest.IRequestOptions = {additionalHeaders: {'authorization': `Bearer ${this.bearerToken}`}};
+            var options: rest.IRequestOptions = {additionalHeaders: {'Cookie': `authservice_session=${this.bearerToken};`}};
             var webRequest = await this.restAPIClient.get<IAllPipeline>(url, options)!;
             if(webRequest.result != null) {
                 var pipelines = webRequest.result.pipelines;
@@ -337,7 +337,7 @@ export class UploadPipeline{
         try {
             var url = `${this.endpointUrl}${this.getAllVersionsEndpoint}?resource_key.type=PIPELINE&resource_key.id=${pipelineID}&filter={"predicates":[{"key":"name","op":"EQUALS","string_value":"${this.versionName}"}]}`;
             url = encodeURI(url);
-            var options: rest.IRequestOptions = {additionalHeaders: {'authorization': `Bearer ${this.bearerToken}`}};
+            var options: rest.IRequestOptions = {additionalHeaders: {'Cookie': `authservice_session=${this.bearerToken};`}};
             var webRequest = await this.restAPIClient.get<IAllPipelineVersion>(url, options)!;
             if(webRequest.result != null) {
                 var versions = webRequest.result.versions;
