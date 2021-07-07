@@ -37,6 +37,7 @@ class UploadPipeline {
             if (req.statusCode == 200) {
                 return true;
             }
+            console.log(req);
             return false;
         }
         catch (error) {
