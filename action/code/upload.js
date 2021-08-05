@@ -203,7 +203,7 @@ class UploadPipeline {
             var uploadFile = fs.createReadStream(this.pipelineFilePath);
             var form = new form_data_1.default();
             form.append('uploadfile', uploadFile);
-            var reqHost = this.endpointUrl.substring(7, this.endpointUrl.length - 1);
+            var reqHost = this.endpointUrl.substring(8, this.endpointUrl.length - 1);
             var reqHeaders = form.getHeaders({ 'Cookie': `authservice_session=${this.bearerToken};` });
             await this.newPLPostRequest(reqHeaders, reqHost, form);
             await this.wait(5000);
@@ -243,7 +243,7 @@ class UploadPipeline {
             var uploadFile = fs.createReadStream(this.pipelineFilePath);
             var form = new form_data_1.default();
             form.append('uploadfile', uploadFile);
-            var reqHost = this.endpointUrl.substring(7, this.endpointUrl.length - 1);
+            var reqHost = this.endpointUrl.substring(8, this.endpointUrl.length - 1);
             var existingPLID = await this.getPipelineID(this.existingPipelineName);
             if (existingPLID == 'Not a valid pipeline id.') {
                 throw new Error('Existing pipeline not found. Check endpoint url. Either choose an existing pipeline or create a new pipeline.');
