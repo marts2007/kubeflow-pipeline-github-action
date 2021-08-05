@@ -43,10 +43,10 @@ class Run {
         this.experiment = core.getInput('experiment');
         this.experimentName = core.getInput('experimentName');
         this.runType = 'One-Off';
-        this.getAllRunsEndpoint = 'pipeline/apis/v1beta1/runs';
-        this.getAllPipelinesEndpoint = 'pipeline/apis/v1beta1/pipelines';
-        this.getAllVersionsEndpoint = 'pipeline/apis/v1beta1/pipeline_versions';
-        this.getAllExperimentsEndpoint = 'pipeline/apis/v1beta1/experiments';
+        this.getAllRunsEndpoint = 'apis/v1beta1/runs';
+        this.getAllPipelinesEndpoint = 'apis/v1beta1/pipelines';
+        this.getAllVersionsEndpoint = 'apis/v1beta1/pipeline_versions';
+        this.getAllExperimentsEndpoint = 'apis/v1beta1/experiments';
         this.pipelineID = '';
         this.pipelineVersionID = '';
         this.experimentID = '';
@@ -176,7 +176,7 @@ class Run {
                 "resource_references": [{"key": {"id": "${this.experimentID}", "type": "EXPERIMENT"}, "relationship": "OWNER"},
                 {"key": {"id": "${this.pipelineVersionID}", "type": "PIPELINE_VERSION"}, "relationship": "CREATOR"}]}`;
             }
-            var reqHost = this.endpointUrl.substring(7, this.endpointUrl.length - 1);
+            var reqHost = this.endpointUrl.substring(8, this.endpointUrl.length - 1);
             var reqHeaders = {
                 'authorization': `Bearer ${this.bearerToken}`,
                 'content-type': 'application/json'
