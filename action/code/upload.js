@@ -33,7 +33,7 @@ class UploadPipeline {
     }
     async validateEndpointUrl() {
         try {
-            var options = { additionalHeaders: { 'Cookie': `authservice_session=${this.bearerToken};` }, allowRedirectDowngrade=True };
+            var options = { additionalHeaders: { 'Cookie': `authservice_session=${this.bearerToken};` }, allowRedirectDowngrade:True };
             var req = await this.restAPIClient.get(this.endpointUrl, options);
             if (req.statusCode == 200) {
                 return true;
