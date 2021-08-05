@@ -29,9 +29,10 @@ jobs:
         pipelineParams: '{"name":"resource_group", "value":"kubeflow"}, {"name":"workspace", "value":"kubeflow-user-example-com"}'
         runDescription: ''
         waitForRunToFinish: 'false'
-        experiment: 'useExistingExperiment'
-        experimentName: 'testExperiment'
+        experiment: 'd07ad902-f708-42f8-a1ab-20595fc900e6'
+        experimentName: 'test'
         experimentDescription: ''
+        namespace: 'kubeflow-user-example-com'
     # Use the outputs from the `Kubeflow Upload and Run Step`
     - name: Get all outputs
       run: |
