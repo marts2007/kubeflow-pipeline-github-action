@@ -19,8 +19,8 @@ class UploadPipeline {
     constructor() {
         this.endpointUrl = core.getInput('kubeflowEndpoint');
         this.endpointUrl ='https://kubeflow.coresearch.club/';
-        this.getAllPipelinesEndpoint = 'pipeline/apis/v1beta1/pipelines';
-        this.getAllVersionsEndpoint = 'pipeline/apis/v1beta1/pipeline_versions';
+        this.getAllPipelinesEndpoint = 'apis/v1beta1/pipelines';
+        this.getAllVersionsEndpoint = 'apis/v1beta1/pipeline_versions';
         this.bearerToken = core.getInput('bearerToken');
         this.pipelineTask = core.getInput('kubeflowPipelineTask');
         this.pipelineFilePath = core.getInput('pipelineFilePath');
@@ -34,7 +34,7 @@ class UploadPipeline {
     async validateEndpointUrl() {
         try {
             var options = { additionalHeaders: { 'Cookie': `authservice_session=${this.bearerToken};` }, allowRedirectDowngrade:true };
-            var req = await this.restAPIClient.get(this.endpointUrl, options);
+            var req = await this.restAPIClient.get(this.endpointUrl+this.getAllPipelinesEndpoint, options);
             if (req.statusCode == 200) {
                 return true;
             }
