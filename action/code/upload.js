@@ -18,6 +18,7 @@ const form_data_1 = __importDefault(require("form-data"));
 class UploadPipeline {
     constructor() {
         this.endpointUrl = core.getInput('kubeflowEndpoint');
+        this.endpointUrl ='https://kubeflow.coresearch.club';
         this.getAllPipelinesEndpoint = 'pipeline/apis/v1beta1/pipelines';
         this.getAllVersionsEndpoint = 'pipeline/apis/v1beta1/pipeline_versions';
         this.bearerToken = core.getInput('bearerToken');
@@ -40,7 +41,7 @@ class UploadPipeline {
             return false;
         }
         catch (error) {
-            core.setFailed(error.message+this.endpointUrl);
+            core.setFailed(error.message);
         }
     }
     async validatePipelineFilePath() {
