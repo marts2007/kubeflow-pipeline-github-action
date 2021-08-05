@@ -37,6 +37,7 @@ class UploadPipeline {
             if (req.statusCode == 200) {
                 return true;
             }
+            console.log(this.endpointUrl+"!")
             console.log(req);
             return false;
         }
