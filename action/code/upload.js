@@ -18,7 +18,6 @@ const form_data_1 = __importDefault(require("form-data"));
 class UploadPipeline {
     constructor() {
         this.endpointUrl = core.getInput('kubeflowEndpoint');
-        this.endpointUrl ='https://kubeflow.coresearch.club/';
         this.getAllPipelinesEndpoint = 'apis/v1beta1/pipelines';
         this.getAllVersionsEndpoint = 'apis/v1beta1/pipeline_versions';
         this.bearerToken = core.getInput('bearerToken');
