@@ -184,6 +184,7 @@ class Run {
                 'authorization': `Bearer ${this.bearerToken}`,
                 'content-type': 'application/json'
             };
+            console.log(form);
             await this.postRequest(reqHost, form, reqHeaders);
             await this.wait(10000);
             var runID = await this.getRunID();
