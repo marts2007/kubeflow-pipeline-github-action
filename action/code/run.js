@@ -180,6 +180,7 @@ class Run {
             }
             var reqHost = this.endpointUrl.substring(8, this.endpointUrl.length - 1);
             var reqHeaders = {
+                'kubeflow-userid':`${this.userid}`,
                 'authorization': `Bearer ${this.bearerToken}`,
                 'content-type': 'application/json'
             };
@@ -257,7 +258,7 @@ class Run {
         try {
             var url = `${this.endpointUrl}${this.getAllRunsEndpoint}?resource_key.type=PIPELINE_VERSION&resource_key.id=${this.pipelineVersionID}&filter={"predicates":[{"key":"name","op":"EQUALS","string_value":"${this.runName}"}]}&sort_by=created_at desc`;
             url = encodeURI(url);
-            var options = { additionalHeaders: { 'authorization': `Bearer ${this.bearerToken}` } };
+            var options = { additionalHeaders: { 'authorization': `Bearer ${this.bearerToken}`, 'kubeflow-userid':`${this.userid}` } };
             var webRequest = await this.restAPIClient.get(url, options);
             if (webRequest.result != null) {
                 if (webRequest.result.runs[0].id != undefined) {
@@ -277,7 +278,7 @@ class Run {
     async getRunStatus() {
         try {
             var url = `${this.endpointUrl}${this.getAllRunsEndpoint}/${this.runID}`;
-            var options = { additionalHeaders: { 'authorization': `Bearer ${this.bearerToken}` } };
+            var options = { additionalHeaders: { 'authorization': `Bearer ${this.bearerToken}`, 'kubeflow-userid':`${this.userid}` } };
             var webRequest = await this.restAPIClient.get(url, options);
             if (webRequest.result != null) {
                 if (webRequest.result.run.status != undefined) {
@@ -297,7 +298,7 @@ class Run {
         try {
             var url = `${this.endpointUrl}${this.getAllPipelinesEndpoint}?filter={"predicates":[{"key":"name","op":"EQUALS","string_value":"${this.pipeline}"}]}`;
             url = encodeURI(url);
-            var options = { additionalHeaders: { 'authorization': `Bearer ${this.bearerToken}` } };
+            var options = { additionalHeaders: { 'authorization': `Bearer ${this.bearerToken}`, 'kubeflow-userid':`${this.userid}` } };
             var webRequest = await this.restAPIClient.get(url, options);
             if (webRequest.result != null) {
                 if (webRequest.result.pipelines[0].id != undefined) {
@@ -318,7 +319,7 @@ class Run {
         try {
             var url = `${this.endpointUrl}${this.getAllVersionsEndpoint}?resource_key.type=PIPELINE&resource_key.id=${this.pipelineID}&filter={"predicates":[{"key":"name","op":"EQUALS","string_value":"${this.pipelineVersion}"}]}`;
             url = encodeURI(url);
-            var options = { additionalHeaders: { 'authorization': `Bearer ${this.bearerToken}` } };
+            var options = { additionalHeaders: { 'authorization': `Bearer ${this.bearerToken}`, 'kubeflow-userid':`${this.userid}` } };
             var webRequest = await this.restAPIClient.get(url, options);
             if (webRequest.result != null) {
                 var versions = webRequest.result.versions;
@@ -346,7 +347,7 @@ class Run {
         try {
             var url = `${this.endpointUrl}${this.getAllExperimentsEndpoint}?filter={"predicates":[{"key":"name","op":"EQUALS","string_value":"${this.experimentName}"}]}&resource_reference_key.type=NAMESPACE&resource_reference_key.id=${this.namespace}`;
             url = encodeURI(url);
-            var options = { additionalHeaders: { 'authorization': `Bearer ${this.bearerToken}` } };
+            var options = { additionalHeaders: { 'authorization': `Bearer ${this.bearerToken}`, 'kubeflow-userid':`${this.userid}` } };
             var webRequest = await this.restAPIClient.get(url, options);
             if (webRequest.result != null) {
                 var experiments = webRequest.result.experiments;
