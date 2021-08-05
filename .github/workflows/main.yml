@@ -33,6 +33,7 @@ jobs:
         experimentName: 'test'
         experimentDescription: ''
         namespace: 'kubeflow-user-example-com'
+        userid: '${{ secrets.KUBEFLOW_USERID }}'
     # Use the outputs from the `Kubeflow Upload and Run Step`
     - name: Get all outputs
       run: |
