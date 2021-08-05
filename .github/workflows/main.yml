@@ -10,7 +10,7 @@ jobs:
       
     - name: check vars
       run: |
-        echo "${{ secrets.KUBEFLOW_ENDPOINT }}"
+        var="${{ secrets.KUBEFLOW_ENDPOINT }}" \n echo $var
       
     # - run: npm install
     - name: Kubeflow Upload and Run Step
