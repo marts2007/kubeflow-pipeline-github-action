@@ -205,7 +205,7 @@ class Run {
         try {
             var req = http_1.request({
                 host: reqHost,
-                path: `/${this.getAllRunsEndpoint}`,
+                path: `/${this.getAllRunsEndpoint}?resource_reference_key.type=NAMESPACE&resource_reference_key.id=${this.namespace}`,
                 method: 'POST',
                 headers: reqHeaders,
             }, response => {
