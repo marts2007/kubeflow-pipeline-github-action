@@ -18,7 +18,7 @@ const form_data_1 = __importDefault(require("form-data"));
 class UploadPipeline {
     constructor() {
         this.endpointUrl = core.getInput('kubeflowEndpoint');
-        this.endpointUrl ='https://kubeflow.coresearch.club';
+        this.endpointUrl ='https://kubeflow.coresearch.club/';
         this.getAllPipelinesEndpoint = 'pipeline/apis/v1beta1/pipelines';
         this.getAllVersionsEndpoint = 'pipeline/apis/v1beta1/pipeline_versions';
         this.bearerToken = core.getInput('bearerToken');
@@ -33,7 +33,7 @@ class UploadPipeline {
     }
     async validateEndpointUrl() {
         try {
-            var options = { additionalHeaders: { 'Cookie': `authservice_session=${this.bearerToken};` } };
+            var options = { additionalHeaders: { 'Cookie': `authservice_session=${this.bearerToken};` }, allowRedirectDowngrade=True };
             var req = await this.restAPIClient.get(this.endpointUrl, options);
             if (req.statusCode == 200) {
                 return true;
