@@ -16,6 +16,7 @@ class Run {
         this.runName = core.getInput('runName');
         this.pipeline = core.getInput('pipeline');
         this.namespace = core.getInput('namespace');
+        this.userid = core.getInput('userid');
         if (core.getInput('useDefaultVersion').toLowerCase() == 'true') {
             this.useDefaultVersion = true;
             this.pipelineVersion = this.pipeline;
@@ -57,7 +58,7 @@ class Run {
     }
     async validateEndpointUrl() {
         try {
-            var options = { additionalHeaders: { 'authorization': `Bearer ${this.bearerToken}` } };
+            var options = { additionalHeaders: { 'authorization': `Bearer ${this.bearerToken}`,'kubeflow-userid':`${this.userid}` } };
             var req = await this.restAPIClient.get(this.endpointUrl, options);
             if (req.statusCode == 200) {
                 return true;
