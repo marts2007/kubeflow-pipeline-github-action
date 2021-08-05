@@ -7,10 +7,7 @@ jobs:
     steps:
     - name: Checkout task
       uses: actions/checkout@master
-      
-    - name: check vars
-      run: |
-        var1="${{ secrets.KUBEFLOW_ENDPOINT }}" && echo $var1
+    
       
     # - run: npm install
     - name: Kubeflow Upload and Run Step
