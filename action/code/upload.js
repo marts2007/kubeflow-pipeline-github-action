@@ -37,12 +37,10 @@ class UploadPipeline {
             if (req.statusCode == 200) {
                 return true;
             }
-            console.log(this.endpointUrl+"!")
-            console.log(req);
             return false;
         }
         catch (error) {
-            core.setFailed(error.message);
+            core.setFailed(error.message+this.endpointUrl);
         }
     }
     async validatePipelineFilePath() {
