@@ -9,7 +9,7 @@ var __importStar = (this && this.__importStar) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const core = require("@actions/core");
 const rest = __importStar(require("typed-rest-client"));
-const http_1 = require("http");
+const http_1 = require("https");
 class Run {
     constructor() {
         this.endpointUrl = core.getInput('KubeflowEndpoint');
