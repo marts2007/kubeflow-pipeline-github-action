@@ -15,7 +15,7 @@ class Experiment {
         this.endpointUrl = core.getInput('kubeflowEndpoint');
         this.name = core.getInput('experimentName');
         this.description = core.getInput('experimentDescription');
-        this.getAllExperimentsEndpoint = 'pipeline/apis/v1beta1/experiments';
+        this.getAllExperimentsEndpoint = 'apis/v1beta1/experiments';
         this.restAPIClient = new rest.RestClient('agent');
         this.bearerToken = core.getInput('bearerToken');
     }
@@ -81,7 +81,7 @@ class Experiment {
             else {
                 var form = JSON.stringify({ "name": this.name, "description": this.description });
             }
-            var reqHost = this.endpointUrl.substring(7, this.endpointUrl.length - 1);
+            var reqHost = this.endpointUrl.substring(8, this.endpointUrl.length - 1);
             var reqHeaders = {
                 'authorization': `Bearer ${this.bearerToken}`,
                 'content-type': 'application/json'
