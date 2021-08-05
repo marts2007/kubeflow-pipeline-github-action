@@ -256,7 +256,7 @@ class Run {
     }
     async getRunID() {
         try {
-            var url = `${this.endpointUrl}${this.getAllRunsEndpoint}?resource_key.type=PIPELINE_VERSION&resource_key.id=${this.pipelineVersionID}&filter={"predicates":[{"key":"name","op":"EQUALS","string_value":"${this.runName}"}]}&sort_by=created_at desc`;
+            var url = `${this.endpointUrl}${this.getAllRunsEndpoint}?resource_key.type=PIPELINE_VERSION&resource_key.id=${this.pipelineVersionID}&filter={"predicates":[{"key":"name","op":"EQUALS","string_value":"${this.runName}"}]}&sort_by=created_at desc&resource_reference_key.type=NAMESPACE&resource_reference_key.id=${this.namespace}`;
             url = encodeURI(url);
             var options = { additionalHeaders: { 'authorization': `Bearer ${this.bearerToken}`, 'kubeflow-userid':`${this.userid}` } };
             var webRequest = await this.restAPIClient.get(url, options);
