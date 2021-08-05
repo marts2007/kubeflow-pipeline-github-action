@@ -15,6 +15,7 @@ class Run {
         this.endpointUrl = core.getInput('KubeflowEndpoint');
         this.runName = core.getInput('runName');
         this.pipeline = core.getInput('pipeline');
+        this.namespace = core.getInput('namespace');
         if (core.getInput('useDefaultVersion').toLowerCase() == 'true') {
             this.useDefaultVersion = true;
             this.pipelineVersion = this.pipeline;
@@ -342,7 +343,7 @@ class Run {
     }
     async getExperimentID() {
         try {
-            var url = `${this.endpointUrl}${this.getAllExperimentsEndpoint}?filter={"predicates":[{"key":"name","op":"EQUALS","string_value":"${this.experimentName}"}]}`;
+            var url = `${this.endpointUrl}${this.getAllExperimentsEndpoint}?filter={"predicates":[{"key":"name","op":"EQUALS","string_value":"${this.experimentName}"}]}&resource_reference_key.type=NAMESPACE&resource_reference_key.id=${this.namespace}`;
             url = encodeURI(url);
             var options = { additionalHeaders: { 'authorization': `Bearer ${this.bearerToken}` } };
             var webRequest = await this.restAPIClient.get(url, options);
