@@ -13,7 +13,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const fs = require("fs");
 const core = require("@actions/core");
 const rest = __importStar(require("typed-rest-client"));
-const http_1 = require("http");
+const http_1 = require("https");
 const form_data_1 = __importDefault(require("form-data"));
 class UploadPipeline {
     constructor() {
