@@ -7,9 +7,7 @@ jobs:
     steps:
     - name: Checkout task
       uses: actions/checkout@master
-    
-      
-    # - run: npm install
+    - run: npm install
     - name: Kubeflow Upload and Run Step
       id: upload-run
       uses: marts2007/kubeflow-pipeline-github-action@master
