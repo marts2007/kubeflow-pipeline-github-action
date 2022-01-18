@@ -1,4 +1,41 @@
 on: [push]
+inputs:
+  pipelineFilePath:
+    description: 'File path of the pipeline file to be uploaded. Must be a compressed .tar.gz file, no larger than 32MB.'
+    required: true
+    default: 'action/code/tests/pipeline2.tar.gz'
+  maxFileSizeBytes:
+    description: 'max pipeline file size'
+    required: true
+    default: 32000000
+  pipelineName:
+    description: 'Pipeline name for new upload.'
+    required: true
+    default: ''  
+  pipelineParams:
+    description: ''
+    required: false
+    default: ''
+  experimentName:
+    description: 'Name a new experiment, or choose an existing experiment name.'
+    required: true
+    default: 'test'
+  namespace:
+    description: 'project kubeflow namespace'
+    required: true
+    default: 'inv4mat'
+  runDescription:
+    description: ''
+    required: true
+    default: ''
+  runName:
+    description: 'The name of the new run.'
+    required: true
+    default: 'testRUN'
+
+
+
+
 
 jobs:
   kubeflow_upload_job:
