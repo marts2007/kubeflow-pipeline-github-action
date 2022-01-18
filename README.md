@@ -3,10 +3,11 @@
 Github action to upload and run a Kubeflow pipeline to KubeFlow workspace.
 
 add 3 secrets to your repo
-
+```
 KUBEFLOWENDPOINT - your kubeflow https:// url
 USERID - pipelines user email
-PASSWORD - users password
+PASSWORD - user`s password
+```
 
 The following is an example of uploading a new pipeline, and running/monitoring the new pipeline on that experiment with this action:
 
