@@ -1,5 +1,5 @@
 try {
-  core = require('@actions/core')
+  const ncore = require('@actions/core')
 } catch (ex) {
     console.log(ex)
     class core{
@@ -13,7 +13,8 @@ try {
             console.log(name,val)
         }
     }
+    ncore = new core()
 }
 
-ncore = new core()
+
 module.exports = ncore
