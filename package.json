@@ -2,7 +2,7 @@
   "name": "kubeflow-pipeline-github-action",
   "version": "1.0.0",
   "description": "kubeflow pipeline github action for creating and running a pipeline.",
-  "main": "main.js",
+  "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
