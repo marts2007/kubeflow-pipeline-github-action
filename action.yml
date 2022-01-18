@@ -9,7 +9,7 @@ inputs:
   pipelineFilePath:
     description: 'File path of the pipeline file to be uploaded. Must be a compressed .tar.gz file, no larger than 32MB.'
     required: true
-    default: 'action/code/tests/pipeline2.tar.gz'
+    default: 'action/code/tests/pipeline.tar.gz'
   maxFileSizeBytes:
     description: 'max pipeline file size'
     required: true
