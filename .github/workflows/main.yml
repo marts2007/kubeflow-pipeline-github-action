@@ -14,7 +14,7 @@ jobs:
       id: upload-run
       uses: marts2007/kubeflow-pipeline-github-action@master
       with:
-        endpointUrl: '${{ secrets.ENDPOINTURL }}'
+        kubeflowEndpoint: '${{ secrets.ENDPOINTURL }}'
         pipelineFilePath: '${{ inputs.pipelineFilePath }}'
         maxFileSizeBytes: '${{ inputs.maxFileSizeBytes }}'
         pipelineName: 'testPL-${{ github.run_number }}'
