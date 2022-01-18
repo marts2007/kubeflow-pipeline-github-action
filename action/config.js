@@ -11,7 +11,7 @@ class Config{
         this.namespace = core.getInput('namespace')
         this.runDescription = core.getInput('runDescription');
         this.runName = core.getInput('runName')
-        this.userid = core.getInput('USERID')
+        this.userid = core.getInput('userid')
         this.password = core.getInput('password')
         if (this.userid==undefined) throw new Error("Please set userid env (api login)")
         if (this.userid==undefined) throw new Error("Please set password env (api password)")
