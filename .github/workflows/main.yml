@@ -14,17 +14,17 @@ jobs:
       id: upload-run
       uses: marts2007/kubeflow-pipeline-github-action@master
       with:
-        endpointUrl: '${{ inputs.kubeflowEndpoint }}'
+        endpointUrl: '${{ secrets.ENDPOINTURL }}'
         pipelineFilePath: '${{ inputs.pipelineFilePath }}'
         maxFileSizeBytes: '${{ inputs.maxFileSizeBytes }}'
-        pipelineName: '${{ inputs.pipelineName }}'
+        pipelineName: 'testPL-${{ github.run_number }}'
         pipelineParams: '${{ inputs.pipelineParams }}'
         experimentName: '${{ inputs.experimentName }}'
         namespace: '${{ inputs.namespace }}'
         runDescription: '${{ inputs.runDescription }}'
         runName: '${{ inputs.runName }}'
-        userid: '${{ inputs.userid }}'
-        password: '${{ inputs.password }}'
+        userid: '${{ secrets.USERID }}'
+        password: '${{ secrets.PASSWORD }}'
 
     # Use the outputs from the `Kubeflow Upload and Run Step`
     - name: Get all outputs

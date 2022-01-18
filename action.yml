@@ -5,7 +5,7 @@ inputs:
   kubeflowEndpoint:  
     description: 'Kubeflow API endpoint base URL format http://yourURL/'
     required: true
-    default: ${{ secrets.KUBEFLOWENDPOINT }}
+    default: ''
   pipelineFilePath:
     description: 'File path of the pipeline file to be uploaded. Must be a compressed .tar.gz file, no larger than 32MB.'
     required: true
@@ -17,7 +17,7 @@ inputs:
   pipelineName:
     description: 'Pipeline name for new upload.'
     required: true
-    default: 'testPL-${{ github.run_number }}'  
+    default: ''  
   pipelineParams:
     description: ''
     required: false
@@ -41,11 +41,11 @@ inputs:
   userid:
     description: 'kubeflow auth user'
     required: true
-    default: '${{ secrets.USERID }}'
+    default: ''
   password:
     description: 'kubeflow user password'
     required: true
-    default: '${{ secrets.PASSWORD }}'
+    default: ''
 
 outputs:
   kf_pipeline_id:
