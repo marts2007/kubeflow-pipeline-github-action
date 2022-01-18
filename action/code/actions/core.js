@@ -1,6 +1,7 @@
 try {
-   const core =  require('@actions/core')
+  core = require('@actions/core')
 } catch (ex) {
+    console.log(ex)
     class core{
         getInput(v){
             return process.env[v]
