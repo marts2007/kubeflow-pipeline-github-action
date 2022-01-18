@@ -13,7 +13,7 @@ jobs:
       uses: marts2007/kubeflow-pipeline-github-action@master
       with:
         kubeflowEndpoint: '${{ secrets.KUBEFLOWENDPOINT }}'
-        pipelineFilePath: '${{ inputs.pipelineFilePath }}'
+        pipelineFilePath: '${{ inputs.pipelinefilepath }}'
         maxFileSizeBytes: '${{ inputs.maxFileSizeBytes }}'
         pipelineName: 'testPL-${{ github.run_number }}'
         pipelineParams: '${{ inputs.pipelineParams }}'
