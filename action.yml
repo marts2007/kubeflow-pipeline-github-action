@@ -5,71 +5,48 @@ inputs:
   kubeflowEndpoint:  
     description: 'Kubeflow API endpoint base URL format http://yourURL/'
     required: true
-    default: ''
-  bearerToken:  
-    description: 'Do not input raw tokens. Read more on how to handle secrets at https://help.github.com/en/actions/configuring-and-managing-workflows/creating-and-storing-encrypted-secrets.'
-    required: false
-    default: ''
-  kubeflowPipelineTask:  # should have a picklist if possible
-    description: 'Input either uploadNew to upload a new pipeline or uploadNewVersion to upload a new pipeline version.'
-    required: true
-    default: 'uploadNew'
-  pipelineFilePath:  
+    default: '${{ secrets.kubeflowEndpoint}}'
+  pipelineFilePath:
     description: 'File path of the pipeline file to be uploaded. Must be a compressed .tar.gz file, no larger than 32MB.'
     required: true
-    default: ''
-  newPipelineName:  
+    default: 'action/code/tests/pipeline2.tar.gz'
+  maxFileSizeBytes:
+    description: 'max pipeline file size'
+    required: true
+    default: 32000000
+  pipelineName:
     description: 'Pipeline name for new upload.'
-    required: false
-    default: ''
-  existingPipelineName:  
-    description: 'Existing pipeline name to create new version.'
-    required: false
-    default: ''
-  versionName:  
-    description: 'New pipeline version name.'
-    required: false
-    default: ''
-  runName:
-    description: 'The name of the new run.'
     required: true
-    default: ''
-  pipeline:
-    description: 'The name of the pipeline being used for the new run.'
-    required: true
-    default: ''
-  useDefaultVersion:
-    description: "This is a boolean that, if true, will have the task use the default version of the chosen pipeline. Either input 'true' or 'false'."
-    required: true
-    default: ''
-  pipelineVersion:
-    description: 'The name of the version, from the pipeline chosen, that will be used.'
-    required: false
-    default: ''
+    default: 'testPL-${{ github.run_number }}'  
   pipelineParams:
-    description: "Pipeline Parameters in the format: {\"name\":\"VAR_NAME\", \"value\":\"VAR_VALUE\"}, {\"name\":\"VAR_NAME\", \"value\":\"VAR_VALUE\"}"
+    description: ''
     required: false
-    default: ''
-  runDescription:
-    description: 'Description of the new run.'
-    required: false
-    default: ''
-  waitForRunToFinish:
-    description: "This is a boolean that, if true, will monitor the run until it is finished. Either input 'true' or 'false'."
-    required: true
-    default: ''
-  experiment:
-    description: "Input either 'createNewExperiment' to make a new experiment, or 'useExistingExperiment' to use an existing experiment."
-    required: true
     default: ''
   experimentName:
     description: 'Name a new experiment, or choose an existing experiment name.'
     required: true
+    default: 'test'
+  namespace:
+    description: 'project kubeflow namespace'
+    required: true
+    default: 'inv4mat'
+  runDescription:
+    description: ''
+    required: true
     default: ''
-  experimentDescription:
-    description: 'Description of a new experiment.'
-    required: false
-    default: ''
+  runName:
+    description: 'The name of the new run.'
+    required: true
+    default: 'testRUN'
+  userid:
+    description: 'kubeflow auth user'
+    required: true
+    default: '${{ secrets.userid }}'
+  password:
+    description: 'kubeflow user password'
+    required: true
+    default: '${{ secrets.password }}'
+
 outputs:
   kf_pipeline_id:
     description: 'ID of the pipeline.'
@@ -86,4 +63,4 @@ branding:
   icon: 'upload'
 runs:
   using: 'node12'
-  main: 'action/index.js'
+  main: 'action/main.js'

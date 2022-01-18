@@ -14,26 +14,18 @@ jobs:
       id: upload-run
       uses: marts2007/kubeflow-pipeline-github-action@master
       with:
-        kubeflowEndpoint: '${{ secrets.KUBEFLOW_ENDPOINT }}'
-        bearerToken: '${{ secrets.TOKEN }}'
-        kubeflowPipelineTask: 'uploadNew'
-        pipelineFilePath: 'action/code/tests/pipeline2.tar.gz'
-        newPipelineName: 'testPL-${{ github.run_number }}'
-        existingPipelineName: 'testPL'
-        versionName: 'newVersion-${{ github.run_number }}'
+        endpointUrl: '${{ inputs.kubeflowEndpoint }}'
+        pipelineFilePath: '${{ inputs.pipelineFilePath }}'
+        maxFileSizeBytes: '${{ inputs.maxFileSizeBytes }}'
+        pipelineName: '${{ inputs.pipelineName }}'
+        pipelineParams: '${{ inputs.pipelineParams }}'
+        experimentName: '${{ inputs.experimentName }}'
+        namespace: '${{ inputs.namespace }}'
+        runDescription: '${{ inputs.runDescription }}'
+        runName: '${{ inputs.runName }}'
+        userid: '${{ inputs.userid }}'
+        password: '${{ inputs.password }}'
 
-        runName: 'testRun'
-        pipeline: 'testPL-${{ github.run_number }}'
-        useDefaultVersion: 'true'
-        pipelineVersion: 'newVersion-${{ github.run_number }}'
-        #pipelineParams: '{"name":"resource_group", "value":"kubeflow"}, {"name":"workspace", "value":"kubeflow-user-example-com"}'
-        runDescription: ''
-        waitForRunToFinish: 'false'
-        experiment: 'd07ad902-f708-42f8-a1ab-20595fc900e6'
-        experimentName: 'test'
-        experimentDescription: ''
-        namespace: 'kubeflow-user-example-com'
-        userid: '${{ secrets.KUBEFLOW_USERID }}'
     # Use the outputs from the `Kubeflow Upload and Run Step`
     - name: Get all outputs
       run: |
